@@ -54,12 +54,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
-              child: Container(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                child: custom_widgets.JarvisHtmlWebView(
+              child: Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 1.0,
+                  child: custom_widgets.JarvisHtmlWebViewV2(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                  ),
                 ),
               ),
             ),
