@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.mycompany.sergeykuyantsev210819932" xmlns:tools="http://schemas.android.com/tools">
-  <!-- Сетевые и аудио‑разрешения -->
+  <!-- Сетевые и аудио‑разрешения (WebRTC / getUserMedia в WebView) -->
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
   <application
     android:label="sergeykuyantsev21081993-2"
     tools:replace="android:label"
