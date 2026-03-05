@@ -57,7 +57,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               child: Container(
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 height: MediaQuery.sizeOf(context).height * 1.0,
-                child: custom_widgets.JarvisHtmlWebViewV2(
+                child: custom_widgets.JarvisHtmlWebView(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 1.0,
                 ),

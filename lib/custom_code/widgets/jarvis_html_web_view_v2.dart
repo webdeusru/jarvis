@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class JarvisHtmlWebViewV2 extends StatefulWidget {
@@ -23,8 +25,16 @@ class JarvisHtmlWebViewV2 extends StatefulWidget {
 }
 
 class _JarvisHtmlWebViewV2State extends State<JarvisHtmlWebViewV2> {
+  // ВАЖНО: сюда вставь ВЕСЬ свой HTML (как у тебя уже есть),
+  // ничего в нём менять не нужно.
   static const String _htmlContent = r'''<!DOCTYPE html>
-<!-- сюда вставь ВЕСЬ свой HTML из предыдущей версии без изменений -->
+<html lang="ru">
+<head>
+  <!-- весь твой CSS/HTML/JS из версии JARVIS -->
+</head>
+<body>
+  <!-- весь остальной контент страницы -->
+</body>
 </html>''';
 
   @override
@@ -35,14 +45,14 @@ class _JarvisHtmlWebViewV2State extends State<JarvisHtmlWebViewV2> {
       child: InAppWebView(
         initialData: InAppWebViewInitialData(
           data: _htmlContent,
-          // baseUrl можно добавить при необходимости:
-          // baseUrl: WebUri('https://voicyfy.ru'),
+          // baseUrl даём, чтобы был нормальный origin для WebView
+          baseUrl: WebUri('https://voicyfy.ru'),
         ),
         initialOptions: InAppWebViewGroupOptions(
           crossPlatform: InAppWebViewOptions(
             javaScriptEnabled: true,
-            transparentBackground: true,
             mediaPlaybackRequiresUserGesture: false,
+            transparentBackground: false,
           ),
           android: AndroidInAppWebViewOptions(
             useHybridComposition: true,
@@ -52,9 +62,15 @@ class _JarvisHtmlWebViewV2State extends State<JarvisHtmlWebViewV2> {
           ),
         ),
         androidOnPermissionRequest: (controller, origin, resources) async {
+          // Автоматически даём WebView доступ к микрофону/камере
           return PermissionRequestResponse(
             resources: resources,
             action: PermissionRequestResponseAction.GRANT,
+          );
+        },
+        onConsoleMessage: (controller, consoleMessage) {
+          debugPrint(
+            'JARVIS [${consoleMessage.messageLevel}]: ${consoleMessage.message}',
           );
         },
       ),
