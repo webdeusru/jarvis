@@ -45,6 +45,8 @@
 
 	<key>NSMicrophoneUsageDescription</key>
     <string>Доступ к микрофону</string>
+	<key>PermissionGroupNotification</key>
+    <string>Уведомления</string>
 
 
 
